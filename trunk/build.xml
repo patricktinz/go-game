@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="GoGame" basedir=".">
+    <description>
+        Build, test and run the GoGame.
+    </description>
+    
+    <!-- Create the folder structure -->
+    <target name="prepare" description="Make preparations">
+        <mkdir dir="build" />
+        <mkdir dir="src" />
+        <mkdir dir="test" />
+    </target>
+    
+    <!-- junit-4.12.jar and hamcrest-core-1.3.jar in folder libs -->
+    <path id="classpath.test">
+        <pathelement location="libs/junit-4.12.jar"/>
+        <pathelement location="libs/hamcrest-core-1.3.jar"/>
+        <pathelement location="build"/>
+    </path>
+    
+    <!-- Compile Java files using the Java compiler -->
+    <target name="compile" depends="prepare" description="Compile the Java-files">
+        <javac srcdir="src" includeantruntime="true" destdir="build" />
+    </target>
+    
+    <!-- Compile test files -->
+    <target name="test-compile" depends="compile">
+        <mkdir dir="build/test"/>
+        <javac srcdir="test" destdir="build/test" includeantruntime="false">
+            <classpath refid="classpath.test"/>
+        </javac>
+    </target>
+    
+    <!-- Run test files -->
+    <target name="test" depends="test-compile">
+        <junit printsummary="on" haltonfailure="yes" fork="true">
+            <classpath>
+                <path refid="classpath.test"/>
+                <pathelement location="build/test"/>
+            </classpath>
+            <formatter type="brief" usefile="false" />
+            <batchtest>
+                <fileset dir="test" includes="**/*Test.java" />
+            </batchtest>
+        </junit>
+    </target>
+    
+    <!-- Run program  -->
+    <target name="run" depends="compile" description="Start program.">
+        <java classpath="build" classname="gogame.GoGame" fork="true"/>
+    </target>
+    
+    <!-- Remove generated files and folders -->
+    <target name="clean" description="Remove all generated files or folders">
+        <delete dir="build" />
+    </target>
+    
+</project>
