@@ -14,14 +14,14 @@ Das Programm ist ein terminalbasiertes Go-Spiel.
 * Spielbrett hat 9x9 Felder
 * Undo-Funktion
 * Nur gültige Züge erlaubt (entsprechend der Go-Spielregeln)
-* Am Schluss wird der Sieger und das Endergenbis gezeigt
+* Am Schluss wird der Sieger und das Endergenbis angezeigt
 
 ---
 
 ### Ausführen und Testen
 
 1. Download oder Klonen des repo: `git clone https://github.com/patricktinz/go-game`
-2. Navigiere in Unterordner: `cd go-game/trunk`
+2. Navigieren Sie in den Unterordner: `cd go-game/trunk`
 3. Bauen des Programms: $ ant  
 3.1 Ausführen des Programms: $ ant run  
 3.2 Testen des Programmcodes: $ ant test   
@@ -38,6 +38,6 @@ Das Programm wurde mit dieser [JUnit Version](https://github.com/junit-team/juni
 
 ---
 
-### Copyright and Lizenzen
+### Copyright und Lizenzen
 
 [GNU GENERAL PUBLIC LICENSE](/LICENSE)
